@@ -17,13 +17,13 @@ fs.readdirSync(__dirname)
   .filter((filename) => filename !== __filename)
   .forEach((filename) => sequelize.import(filename));
 
-const models = Object.create(sequelize.models);
-Object.keys(models).forEach((name) => {
-  const Model = models[name];
+Object.keys(sequelize.models).forEach((name) => {
+  const Model = sequelize.models[name];
   if (Model.associate) {
-    Model.associate(models);
+    Model.associate(sequelize.models);
   }
 });
 
-models.sequelize = sequelize;
-module.exports = models;
+sequelize.sync();
+
+module.exports = sequelize;
