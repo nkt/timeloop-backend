@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Timetracker",
   "main": "index.js",
+  "bin": {
+    "timeloop": "bin/timeloop"
+  },
   "scripts": {
     "start": "node -r babel-core/register src/app.js",
     "start-dev": "nodemon -r babel-core/register src/app.js"
@@ -20,16 +23,22 @@
   "dependencies": {
     "babel-core": "5.8.22",
     "babel-runtime": "5.8.20",
+    "bcrypt": "^0.8.4",
     "bluebird": "2.9.34",
     "body-parser": "1.13.3",
+    "chalk": "^1.1.0",
+    "commander": "^2.8.1",
     "connect-redis": "2.4.1",
     "express": "4.13.3",
     "express-session": "1.11.3",
     "hiredis": "0.4.0",
+    "joi": "^6.6.1",
     "passport": "0.2.2",
+    "passport-local": "^1.0.0",
     "pg": "4.4.1",
     "pg-hstore": "2.3.2",
     "pg-native": "1.8.1",
+    "promptly": "^0.2.1",
     "redis": "0.12.1",
     "sequelize": "3.5.1"
   }
