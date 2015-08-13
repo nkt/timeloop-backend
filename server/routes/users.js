@@ -1,11 +1,11 @@
 module.exports = (app) => {
   const {User, Event, Project} = app.db.models;
 
-  app.get('/users/me', (req, res) => {
+  app.get('/api/users/me', (req, res) => {
     res.json(req.user);
   });
 
-  app.get('/users', (req, res, next) => {
+  app.get('/api/users', (req, res, next) => {
     User.findAll({
       order: ['rate']
     }).then((users) => {
@@ -36,11 +36,11 @@ module.exports = (app) => {
     }).catch(next);
   });
 
-  app.get('/users/:user_id', (req, res, next) => {
+  app.get('/api/users/:user_id', (req, res, next) => {
     res.json(req.params.user);
   });
 
-  app.get('/users/:user_id/events', (req, res, next) => {
+  app.get('/api/users/:user_id/events', (req, res, next) => {
     req.params.user.getEvents({
       attributes: ['id', 'title', 'description', 'date', 'time'],
       include: [

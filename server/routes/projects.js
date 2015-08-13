@@ -1,13 +1,13 @@
 module.exports = (app) => {
   const {Project, Event, User} = app.db.models;
 
-  app.get('/projects', (req, res, next) => {
+  app.get('/api/projects', (req, res, next) => {
     Project.findAll().then((projects) => {
       res.json(projects);
     }).catch(next);
   });
 
-  app.post('/projects', (req, res, next) => {
+  app.post('/api/projects', (req, res, next) => {
     Project.create(req.body).then((project) => {
       res.json(project).status(201);
     }).catch(next);
@@ -36,11 +36,11 @@ module.exports = (app) => {
     }).catch(next);
   });
 
-  app.get('/projects/:project_id', (req, res, next) => {
+  app.get('/api/projects/:project_id', (req, res, next) => {
     res.json(req.params.project);
   });
 
-  app.get('/projects/:project_id/events', (req, res, next) => {
+  app.get('/api/projects/:project_id/events', (req, res, next) => {
     req.params.project.getEvents({
       attributes: ['id', 'title', 'description', 'date', 'time'],
       include: [
@@ -55,7 +55,7 @@ module.exports = (app) => {
     }).catch(next);
   });
 
-  app.post('/projects/:project_id/events', (req, res, next) => {
+  app.post('/api/projects/:project_id/events', (req, res, next) => {
     Event.create(Object.assign(req.body, {
       user_id: req.user.id,
       project_id: req.params.project.id
