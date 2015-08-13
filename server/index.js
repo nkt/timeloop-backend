@@ -47,5 +47,6 @@ app.use((err, req, res, next) => {
 });
 
 const server = app.listen(config.listen, () => {
-  console.log('server started', server.address());
+  const {address, port} = server.address();
+  console.log('[%s] server started http://%s:%d', app.get('env'), address, port);
 });

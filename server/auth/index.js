@@ -25,7 +25,7 @@ module.exports = (app) => {
   app.post('/sessions', (req, res, next) => {
     console.log(req.body);
     next();
-  },passport.authenticate('local'), (req, res) => {
+  }, passport.authenticate('local'), (req, res) => {
     res.json(req.user);
     res.status(201);
   });
