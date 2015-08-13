@@ -3,8 +3,13 @@ const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 const passport = require('passport');
 const checkAuth = require('./check-auth');
+const webpack = require('./webpack');
 
 function middlewares(app, config) {
+  if (app.get('env') === 'development') {
+    app.use(webpack());
+  }
+
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: false}));
   app.use(session({
