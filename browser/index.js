@@ -1,9 +1,7 @@
 const React = require('react');
-const ReactRouter = require('react-router');
+const router = require('./router');
 
-const router = ReactRouter.create({
-  routes: (
-    
-  ),
-  location: ReactRouter.HashLocation
+const container = document.getElementById('timeloop');
+router.run((Root) => {
+  React.render(<Root />, container);
 });

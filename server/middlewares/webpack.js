@@ -8,8 +8,7 @@ function createWebpackMiddleware() {
       colors: true
     },
     noInfo: true,
-    publicPath: '/',
-    historyApiFallback: true
+    publicPath: '/'
   });
 }
 
